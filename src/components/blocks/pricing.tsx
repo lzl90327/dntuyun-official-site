@@ -2,132 +2,149 @@
 
 import { useState } from "react";
 
-import { Check } from "lucide-react";
+import { Check, Send, QrCode, FileText } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { COPY } from "@/lib/copy";
 
-const plans = [
-  {
-    name: "Free",
-    monthlyPrice: "$0",
-    yearlyPrice: "$0",
-    description: "Free for everyone",
-    features: [
-      "Unlimited members",
-      "2 teams",
-      "500 issues",
-      "Slack and Github integrations",
-    ],
-  },
-  {
-    name: "Startup",
-    monthlyPrice: "$8",
-    yearlyPrice: "$6",
-    features: [
-      "All free plan features and...",
-      "Mainline AI",
-      "Unlimited teams",
-      "Unlimited issues and file uploads",
-      "Mainline Insights",
-      "Admin roles",
-    ],
-  },
-  {
-    name: "Enterprise",
-    monthlyPrice: "$8",
-    yearlyPrice: "$6",
-    features: [
-      "All free plan features and...",
-      "Mainline AI",
-      "Supermainline AGI",
-      "Free daily catered lunch",
-      "random HIPPA audits",
-    ],
-  },
-];
+const C = COPY.cta;
+const F = COPY.cta.form.fields;
 
 export const Pricing = ({ className }: { className?: string }) => {
-  const [isAnnual, setIsAnnual] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <section id="cta" className={cn("py-28 lg:py-32 scroll-mt-20", className)}>
+        <div className="container max-w-5xl">
+          <Card className="p-12 text-center">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mx-auto mb-4">
+              <Check className="h-6 w-6 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">提交成功</h3>
+            <p className="text-muted-foreground">
+              我们将尽快与您联系。也可扫码添加客户经理获取即时回复。
+            </p>
+          </Card>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className={cn("py-28 lg:py-32", className)}>
+    <section id="cta" className={cn("py-28 lg:py-32 scroll-mt-20", className)}>
       <div className="container max-w-5xl">
-        <div className="space-y-4 text-center">
+        <div className="space-y-4 text-center mb-12">
           <h2 className="text-2xl tracking-tight md:text-4xl lg:text-5xl">
-            Pricing
+            {C.title}
           </h2>
           <p className="text-muted-foreground mx-auto max-w-xl leading-snug text-balance">
-            Use Mainline for free with your whole team. Upgrade to enable
-            unlimited issues, enhanced security controls, and additional
-            features.
+            {C.desc}
           </p>
         </div>
 
-        <div className="mt-8 grid items-start gap-5 text-start md:mt-12 md:grid-cols-3 lg:mt-20">
-          {plans.map((plan) => (
-            <Card
-              key={plan.name}
-              className={`${
-                plan.name === "Startup"
-                  ? "outline-primary origin-top outline-4"
-                  : ""
-              }`}
-            >
-              <CardContent className="flex flex-col gap-7 px-6 py-5">
-                <div className="space-y-2">
-                  <h3 className="text-foreground font-semibold">{plan.name}</h3>
-                  <div className="space-y-1">
-                    <div className="text-muted-foreground text-lg font-medium">
-                      {isAnnual ? plan.yearlyPrice : plan.monthlyPrice}{" "}
-                      {plan.name !== "Free" && (
-                        <span className="text-muted-foreground">
-                          per user/
-                          {isAnnual ? "year" : "month"}
-                        </span>
-                      )}
-                    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
+          {/* Left: Form */}
+          <Card>
+            <CardContent className="p-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">{F.name.label}</Label>
+                    <Input
+                      id="name"
+                      placeholder={F.name.placeholder}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="org">{F.org.label}</Label>
+                    <Input
+                      id="org"
+                      placeholder={F.org.placeholder}
+                      required
+                    />
                   </div>
                 </div>
 
-                {plan.name !== "Free" ? (
-                  <div className="flex items-center gap-2">
-                    <Switch
-                      checked={isAnnual}
-                      onCheckedChange={() => setIsAnnual(!isAnnual)}
-                      aria-label="Toggle annual billing"
-                    />
-                    <span className="text-sm font-medium">Billed annually</span>
-                  </div>
-                ) : (
-                  <span className="text-muted-foreground text-sm">
-                    {plan.description}
-                  </span>
-                )}
+                <div className="space-y-2">
+                  <Label htmlFor="role">{F.role.label}</Label>
+                  <Select required>
+                    <SelectTrigger>
+                      <SelectValue placeholder={F.role.placeholder} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {F.role.options.map((opt) => (
+                        <SelectItem key={opt} value={opt}>
+                          {opt}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-                <div className="space-y-3">
-                  {plan.features.map((feature) => (
-                    <div
-                      key={feature}
-                      className="text-muted-foreground flex items-center gap-1.5"
-                    >
-                      <Check className="size-5 shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </div>
-                  ))}
+                <div className="space-y-2">
+                  <Label htmlFor="contact">{F.contact.label}</Label>
+                  <Input
+                    id="contact"
+                    placeholder={F.contact.placeholder}
+                    required
+                  />
                 </div>
 
                 <Button
-                  className="w-fit"
-                  variant={plan.name === "Startup" ? "default" : "outline"}
+                  type="submit"
+                  className="w-full md:w-[340px] mt-2"
                 >
-                  Get started
+                  <Send className="size-4 mr-2" />
+                  {F.submit}
                 </Button>
-              </CardContent>
-            </Card>
-          ))}
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Right: QR Aside */}
+          <Card className="flex flex-col items-center text-center p-6">
+            <div
+              className="relative flex h-[140px] w-[140px] items-center justify-center rounded-xl mb-4"
+              style={{
+                background: "hsl(var(--muted))",
+                border: "1px solid hsl(var(--border))",
+              }}
+            >
+              <QrCode className="h-12 w-12 text-muted-foreground opacity-30" />
+              <span className="absolute bottom-2 text-[10px] tracking-widest text-muted-foreground opacity-50 uppercase">
+                企微
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2 mb-3">
+              <FileText className="h-4 w-4 text-muted-foreground opacity-60" />
+              <span className="text-base font-semibold">{C.aside.label}</span>
+            </div>
+
+            {/* badge - primary color */}
+            <span
+              className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold border tracking-wide"
+              style={{
+                color: "hsl(var(--primary))",
+                borderColor: "hsla(var(--primary), 0.25)",
+                background: "hsla(var(--primary), 0.08)",
+              }}
+            >
+              {C.aside.badge}
+            </span>
+          </Card>
         </div>
       </div>
     </section>

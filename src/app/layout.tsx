@@ -63,29 +63,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mainline - Modern Next.js Template",
-    template: "%s | Mainline",
+    default: "登途云 | 全国智能运力网络平台",
+    template: "%s | 登途云",
   },
   description:
-    "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
+    "构建跨区域智能运力网络，实现可视、可控、可协同的运输基础设施。10,000+ 在网车辆，50万+ 月度运单量。",
   keywords: [
-    "Next.js",
-    "nextjs template",
-    "nextjs theme",
-    "nextjs starter",
-    "shadcn template",
-    "shadcn theme",
-    "shadcn starter",
-    "tailwind template",
-    "tailwind theme",
-    "tailwind starter",
-    "mdx template",
-    "mdx theme",
-    "mdx starter",
+    "登途云",
+    "智能运力网络",
+    "物流平台",
+    "运力调度",
+    "风控",
+    "产业运力",
   ],
-  authors: [{ name: "shadcnblocks.com" }],
-  creator: "shadcnblocks.com",
-  publisher: "shadcnblocks.com",
+  authors: [{ name: "登途云物流科技有限公司" }],
+  creator: "登途云物流科技有限公司",
+  publisher: "登途云物流科技有限公司",
   robots: {
     index: true,
     follow: true,
@@ -102,26 +95,26 @@ export const metadata: Metadata = {
     shortcut: [{ url: "/favicon/favicon.ico" }],
   },
   openGraph: {
-    title: "Mainline - Modern Next.js Template",
+    title: "登途云 | 全国智能运力网络平台",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
-    siteName: "Mainline",
+      "构建跨区域智能运力网络，实现可视、可控、可协同的运输基础设施。",
+    siteName: "登途云",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Mainline - Modern Next.js Template",
+        alt: "登途云 | 全国智能运力网络平台",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mainline - Modern Next.js Template",
+    title: "登途云 | 全国智能运力网络平台",
     description:
-      "A modern Next.js template built with shadcn/ui, Tailwind & MDX. Open source - MIT License.",
+      "构建跨区域智能运力网络，实现可视、可控、可协同的运输基础设施。",
     images: ["/og-image.jpg"],
-    creator: "@ausrobdev",
+    creator: "@dengtuyun",
   },
 };
 
@@ -131,7 +124,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" className="dark" suppressHydrationWarning>
       <head>
         <script
           async
@@ -139,11 +132,11 @@ export default function RootLayout({
           src="https://tweakcn.com/live-preview.min.js"
         />
       </head>
-      <body className={`${dmSans.variable} ${inter.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${inter.variable} antialiased dark`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <StyleGlideProvider />
