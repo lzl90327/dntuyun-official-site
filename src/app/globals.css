@@ -46,6 +46,7 @@
 
 html {
   background: var(--background);
+  scroll-padding-top: 7rem;
 }
 
 body {

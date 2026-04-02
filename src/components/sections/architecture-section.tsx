@@ -8,7 +8,7 @@ export function ArchitectureSection() {
   return (
     <section
       id="architecture"
-      className="bg-navy relative overflow-hidden py-20 text-white sm:py-24 lg:py-28"
+      className="bg-navy relative scroll-mt-28 overflow-hidden py-20 text-white sm:py-24 lg:py-28"
     >
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:120px_120px]" />
       <Container className="relative">

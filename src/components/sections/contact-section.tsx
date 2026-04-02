@@ -34,7 +34,7 @@ function QrPlaceholder() {
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-18 sm:py-24 lg:py-28">
+    <section id="contact" className="scroll-mt-28 py-18 sm:py-24 lg:py-28">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal className="max-w-[520px] space-y-8">
@@ -93,7 +93,7 @@ export function ContactSection() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="border-line shadow-soft rounded-[28px] border bg-white p-6 sm:p-8">
+            <div className="border-line shadow-soft rounded-[28px] border bg-white p-6 sm:p-8 lg:sticky lg:top-28">
               <div className="border-line space-y-2 border-b pb-6">
                 <h3 className="text-ink-strong text-[22px] font-semibold tracking-[-0.04em]">
                   商务咨询

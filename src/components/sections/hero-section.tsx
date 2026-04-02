@@ -7,7 +7,7 @@ import { StatItem } from "@/components/ui/stat-item";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-10 pb-18 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
+    <section className="relative overflow-hidden pt-8 pb-18 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28">
       <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,rgba(36,79,210,0.08),transparent_46%)]" />
       <Container className="relative">
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
@@ -18,7 +18,7 @@ export function HeroSection() {
             </div>
 
             <div className="space-y-6">
-              <h1 className="text-ink-strong text-[46px] leading-[0.98] font-semibold tracking-[-0.07em] text-balance sm:text-[58px] lg:text-[68px]">
+              <h1 className="text-ink-strong text-[42px] leading-[0.98] font-semibold tracking-[-0.07em] text-balance sm:text-[58px] lg:text-[68px]">
                 连接物流全链路
                 <br />
                 <span className="text-brand-blue">数字化平台体系</span>
@@ -42,7 +42,7 @@ export function HeroSection() {
               </Button>
             </div>
 
-            <div className="border-line grid gap-6 border-t pt-8 sm:grid-cols-3">
+            <div className="border-line grid gap-8 border-t pt-8 sm:grid-cols-3 sm:gap-6">
               {heroStats.map((item) => (
                 <StatItem
                   key={item.label}
@@ -109,7 +109,7 @@ export function HeroSection() {
                 </div>
               </div>
 
-              <div className="absolute top-16 -right-1 hidden gap-4 lg:flex lg:flex-col">
+              <div className="absolute top-16 -right-1 hidden gap-4 xl:flex xl:flex-col">
                 {["业务协同", "运输管理", "运营分析"].map((tag, index) => (
                   <div
                     key={tag}

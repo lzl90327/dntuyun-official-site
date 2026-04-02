@@ -18,7 +18,10 @@ const capabilityIcons = [Network, Package2, PanelsTopLeft, ScanSearch];
 
 export function CapabilitiesSection() {
   return (
-    <section id="capabilities" className="bg-surface py-18 sm:py-24 lg:py-28">
+    <section
+      id="capabilities"
+      className="bg-surface scroll-mt-28 py-18 sm:py-24 lg:py-28"
+    >
       <Container className="space-y-10">
         <Reveal>
           <SectionHeading
@@ -88,7 +91,7 @@ export function CapabilitiesSection() {
                 <Reveal
                   key={card.title}
                   delay={index * 0.05}
-                  className="group border-line shadow-soft rounded-[22px] border bg-white p-6 transition-transform duration-200 hover:-translate-y-0.5"
+                  className="group border-line shadow-soft hover:border-brand-blue/18 rounded-[22px] border bg-white p-6 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(9,21,40,0.08)]"
                 >
                   <div className="mb-5 flex items-start justify-between">
                     <div className="bg-brand-blue/6 text-brand-blue inline-flex size-10 items-center justify-center rounded-[14px]">

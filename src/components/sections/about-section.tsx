@@ -5,7 +5,10 @@ import { Reveal } from "@/components/ui/reveal";
 
 export function AboutSection() {
   return (
-    <section id="about" className="bg-surface py-18 sm:py-24 lg:py-28">
+    <section
+      id="about"
+      className="bg-surface scroll-mt-28 py-18 sm:py-24 lg:py-28"
+    >
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <Reveal className="max-w-[520px] space-y-6">
