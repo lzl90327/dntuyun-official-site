@@ -106,7 +106,7 @@ export function HeroSection() {
                 {hero.floatingLabels.map((tag, index) => (
                   <div
                     key={tag}
-                    className="panel-white-soft text-ink-strong rounded-[13px] px-[18px] py-2.5 text-[11px] font-medium tracking-[0.01em]"
+                    className="rounded-[13px] border border-black/[0.035] bg-white/[0.68] px-4 py-2 text-[10px] font-medium tracking-[0.01em] text-ink-strong/72 shadow-[0_10px_22px_rgba(10,20,36,0.028)] backdrop-blur-[14px]"
                     style={{ transform: `translateX(${index * 7}px)` }}
                   >
                     {tag}

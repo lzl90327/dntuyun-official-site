@@ -122,7 +122,7 @@ export const homePageContent: HomePageContent = {
         },
         {
           index: "03",
-          title: "业务优先于功能",
+          title: "业务导向",
           description:
             "围绕真实物流运营链路设计能力结构，让系统服务业务协同，而不是将通用功能简单迁移到物流场景。",
         },

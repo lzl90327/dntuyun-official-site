@@ -46,10 +46,12 @@ export function SiteFooter() {
             <h3 className="text-[11px] font-semibold tracking-[0.18em] text-white/30 uppercase">
               联系
             </h3>
-            <div className="space-y-3 text-[13px] text-white/56">
+            <div className="max-w-[220px] space-y-3 text-[13px] text-white/56">
               <p>{siteConfig.contact.email}</p>
               <p>{siteConfig.contact.phone}</p>
-              <p>{siteConfig.contact.address}</p>
+              <p className="leading-[1.8] break-words text-white/50">
+                {siteConfig.contact.address}
+              </p>
             </div>
           </div>
         </div>

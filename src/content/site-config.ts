@@ -46,7 +46,7 @@ export const siteConfig: SiteConfig = {
 
   // SEO
   seo: {
-    title: "LogiPlatform | 物流数字化平台体系",
+    title: "登途云 | 物流数字化平台",
     description:
       "面向物流企业的数字化平台型官方网站，展示平台能力、技术架构、业务场景与合作方式。",
   },
