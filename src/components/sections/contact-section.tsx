@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { contactItems } from "@/lib/site-data";
+import { homePageContent } from "@/content/homepage-content";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { FormField } from "@/components/ui/form-field";
@@ -11,113 +11,90 @@ const icons = {
   address: MapPin,
 };
 
-function QrPlaceholder() {
-  return (
-    <div className="grid size-[72px] grid-cols-5 gap-1 rounded-[14px] bg-white p-2 shadow-[0_10px_26px_rgba(8,14,30,0.08)]">
-      {Array.from({ length: 25 }).map((_, index) => {
-        const active = [
-          0, 1, 3, 4, 5, 7, 9, 10, 12, 14, 15, 16, 18, 20, 22, 23, 24,
-        ].includes(index);
-
-        return (
-          <span
-            key={index}
-            className={
-              active ? "bg-navy rounded-[2px]" : "rounded-[2px] bg-[#eef2f9]"
-            }
-          />
-        );
-      })}
-    </div>
-  );
-}
-
 export function ContactSection() {
+  const { contact } = homePageContent.sections;
+
   return (
-    <section id="contact" className="scroll-mt-28 py-18 sm:py-24 lg:py-28">
+    <section id="contact" className="section-shell scroll-mt-28">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
-          <Reveal className="max-w-[520px] space-y-8">
-            <div className="space-y-5">
-              <p className="text-brand-blue text-[11px] font-semibold tracking-[0.18em] uppercase">
-                联系我们
-              </p>
-              <h2 className="text-ink-strong text-[34px] leading-[1.12] font-semibold tracking-[-0.05em] text-balance sm:text-[46px]">
-                欢迎与我们
+        <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
+          <Reveal className="max-w-[520px] space-y-7">
+            <div className="space-y-4">
+              <p className="eyebrow">{contact.eyebrow}</p>
+              <h2 className="text-ink-strong text-[32px] leading-[1.14] font-semibold tracking-[-0.055em] text-balance sm:text-[42px]">
+                {contact.titleLines[0]}
                 <br />
-                探讨合作可能
+                {contact.titleLines[1]}
               </h2>
-              <p className="text-ink-soft text-[15px] leading-8">
-                无论是平台能力咨询、战略合作还是技术架构交流，我们期待与你深入对话。
+              <p className="text-ink-soft max-w-[470px] text-[14px] leading-[1.95]">
+                {contact.description}
               </p>
             </div>
 
-            <div className="divide-line border-line shadow-soft divide-y rounded-[24px] border bg-white">
-              {contactItems.map((item) => {
+            <div className="panel-white divide-y divide-black/[0.05] rounded-[26px]">
+              {contact.items.map((item) => {
                 const Icon = icons[item.type as keyof typeof icons];
 
                 return (
-                  <div key={item.title} className="flex gap-4 px-6 py-6">
-                    <div className="bg-brand-blue/6 text-brand-blue mt-1 inline-flex size-10 items-center justify-center rounded-[14px]">
+                  <div key={item.title} className="flex gap-4 px-6 py-[22px]">
+                    <div className="border-brand-blue/6 bg-brand-blue/[0.045] text-brand-blue mt-0.5 inline-flex size-10 items-center justify-center rounded-[13px] border">
                       <Icon size={18} />
                     </div>
-                    <div className="space-y-1">
-                      <div className="text-ink-faint text-[13px] font-medium">
+                    <div className="space-y-1.5">
+                      <div className="text-ink-faint text-[12px] font-medium">
                         {item.title}
                       </div>
-                      <div className="text-ink-strong text-[22px] font-semibold tracking-[-0.04em]">
+                      <div className="text-ink-strong break-words text-[20px] leading-[1.45] font-semibold tracking-[-0.04em]">
                         {item.value}
                       </div>
-                      <div className="text-ink-faint text-[13px]">
-                        {item.meta}
-                      </div>
+                      {item.meta ? (
+                        <div className="text-ink-faint text-[12px]">
+                          {item.meta}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 );
               })}
             </div>
-
-            <div className="border-line bg-surface flex items-center gap-4 rounded-[24px] border px-5 py-5">
-              <QrPlaceholder />
-              <div className="space-y-1">
-                <div className="text-ink-strong text-[14px] font-semibold">
-                  微信扫码联系
-                </div>
-                <div className="text-ink-faint text-[13px] leading-6">
-                  商务合作洽谈
-                  <br />
-                  方案与技术咨询
-                </div>
-              </div>
-            </div>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="border-line shadow-soft rounded-[28px] border bg-white p-6 sm:p-8 lg:sticky lg:top-28">
-              <div className="border-line space-y-2 border-b pb-6">
-                <h3 className="text-ink-strong text-[22px] font-semibold tracking-[-0.04em]">
-                  商务咨询
+            <div className="panel-white rounded-[28px] p-6 sm:p-8 lg:sticky lg:top-28">
+              <div className="space-y-2 border-b border-black/[0.05] pb-6">
+                <h3 className="text-ink-strong text-[20px] font-semibold tracking-[-0.04em]">
+                  {contact.form.title}
                 </h3>
-                <p className="text-ink-faint text-[14px] leading-7">
-                  请留下您的联系信息，我们将在 1 个工作日内与您联系。
+                <p className="text-ink-faint/90 text-[13px] leading-[1.82]">
+                  {contact.form.description}
                 </p>
               </div>
 
-              <form className="space-y-5 pt-6">
-                <FormField label="姓名" placeholder="您的姓名" />
-                <FormField label="公司" placeholder="公司全称" />
+              <form className="space-y-4.5 pt-6">
                 <FormField
-                  label="邮箱"
+                  label={contact.form.fields.name.label}
+                  placeholder={contact.form.fields.name.placeholder}
+                />
+                <FormField
+                  label={contact.form.fields.company.label}
+                  placeholder={contact.form.fields.company.placeholder}
+                />
+                <FormField
+                  label={contact.form.fields.email.label}
                   type="email"
-                  placeholder="name@company.com"
+                  placeholder={contact.form.fields.email.placeholder}
                 />
                 <FormField
-                  label="咨询内容"
+                  label={contact.form.fields.message.label}
                   multiline
-                  placeholder="请简要说明您的业务情况与合作意向（选填）"
+                  placeholder={contact.form.fields.message.placeholder}
                 />
-                <Button as="button" type="button" className="w-full">
-                  发送
+                <Button
+                  as="button"
+                  type="button"
+                  className="bg-brand-blue mt-1 h-[46px] w-full rounded-[13px] shadow-[0_10px_22px_rgba(33,80,216,0.11)] hover:shadow-[0_12px_24px_rgba(33,80,216,0.13)]"
+                >
+                  {contact.form.submitLabel}
                 </Button>
               </form>
             </div>

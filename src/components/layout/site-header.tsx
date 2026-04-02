@@ -4,45 +4,48 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { navigation } from "@/lib/site-data";
+import { homePageContent } from "@/content/homepage-content";
+import { siteConfig } from "@/content/site-config";
 import { BrandMark } from "@/components/ui/brand-mark";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { navigation, contactButtonLabel } = homePageContent.header;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-transparent bg-white/82 backdrop-blur-xl">
-      <Container className="flex h-20 items-center justify-between gap-6">
+    <header className="sticky top-0 z-50 border-b border-black/[0.02] bg-white/74 backdrop-blur-[14px]">
+      <Container className="flex h-[72px] items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3">
           <BrandMark className="size-7 rounded-[8px]" />
-          <span className="text-ink-strong text-sm font-semibold tracking-[-0.03em]">
-            LogiPlatform
+          <span className="text-ink-strong text-[13px] font-semibold tracking-[-0.03em]">
+            {siteConfig.brand.name}
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-9 lg:flex">
           {navigation.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-ink-soft hover:text-ink-strong text-sm transition-colors"
+              className="text-ink-soft hover:text-ink-strong text-[13px] font-medium tracking-[0.01em] transition-colors"
             >
               {item.label}
             </a>
           ))}
           <Button
             href="#contact"
-            className="h-11 rounded-[12px] px-5 text-[13px]"
+            className="h-[42px] rounded-[12px] px-[18px] text-[12px] shadow-[0_10px_22px_rgba(33,80,216,0.14)]"
+            style={{ color: "#fff" }}
           >
-            联系我们
+            {contactButtonLabel}
           </Button>
         </nav>
 
         <button
           type="button"
-          className="border-line text-ink-strong inline-flex size-11 items-center justify-center rounded-[14px] border lg:hidden"
+          className="border-line text-ink-strong inline-flex size-[42px] items-center justify-center rounded-[13px] border bg-white/80 lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "关闭菜单" : "打开菜单"}
           aria-expanded={open}
@@ -58,14 +61,14 @@ export function SiteHeader() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="border-line border-t bg-white lg:hidden"
+            className="border-line panel-white-soft border-t lg:hidden"
           >
             <Container className="flex flex-col gap-4 py-5">
               {navigation.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-ink-soft py-1 text-sm"
+                  className="text-ink-soft py-1 text-[13px] font-medium"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
@@ -76,7 +79,7 @@ export function SiteHeader() {
                 className="mt-2 w-full"
                 onClick={() => setOpen(false)}
               >
-                联系我们
+                {contactButtonLabel}
               </Button>
             </Container>
           </motion.div>

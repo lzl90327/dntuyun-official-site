@@ -6,18 +6,22 @@ type StatItemProps = {
 
 export function StatItem({ value, label, inverse = false }: StatItemProps) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <div
         className={
           inverse
-            ? "text-[44px] font-semibold tracking-[-0.05em] text-white"
-            : "text-ink-strong text-[38px] font-semibold tracking-[-0.05em]"
+            ? "text-[40px] font-semibold tracking-[-0.055em] text-white"
+            : "text-ink-strong text-[34px] font-semibold tracking-[-0.055em]"
         }
       >
         {value}
       </div>
       <p
-        className={inverse ? "text-sm text-white/64" : "text-ink-faint text-sm"}
+        className={
+          inverse
+            ? "text-[12px] tracking-[0.01em] text-white/58"
+            : "text-ink-faint text-[12px] tracking-[0.01em]"
+        }
       >
         {label}
       </p>

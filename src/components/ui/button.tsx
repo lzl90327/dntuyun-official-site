@@ -24,17 +24,17 @@ type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const variants = {
   primary:
-    "bg-brand-blue text-white shadow-[0_14px_32px_rgba(34,78,209,0.18)] hover:bg-brand-blue-strong",
+    "bg-brand-blue text-white shadow-[0_12px_28px_rgba(33,80,216,0.15)] hover:bg-brand-blue-strong hover:text-white hover:shadow-[0_14px_30px_rgba(33,80,216,0.18)] focus-visible:text-white active:text-white",
   secondary:
-    "border border-line bg-white text-ink-strong hover:border-brand-blue/30 hover:text-brand-blue",
+    "border border-line bg-white/92 text-ink-strong hover:border-brand-blue/22 hover:bg-white hover:text-brand-blue",
   ghost:
-    "border border-white/15 bg-white/0 text-white hover:border-white/25 hover:bg-white/5",
+    "border border-white/12 bg-white/[0.02] text-white/86 hover:border-white/18 hover:bg-white/[0.05] hover:text-white",
 };
 
 export function Button(allProps: ButtonProps) {
   const { className, variant = "primary", children } = allProps;
   const sharedClassName = cn(
-    "inline-flex h-12 items-center justify-center rounded-[14px] px-6 text-sm font-medium tracking-[0.01em] transition-[transform,background-color,border-color,color,box-shadow] duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-blue/12",
+    "inline-flex h-[46px] items-center justify-center rounded-[13px] px-[22px] text-[13px] font-medium tracking-[-0.01em] transition-[transform,background-color,border-color,color,box-shadow] duration-200 hover:-translate-y-[1px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-blue/12",
     variants[variant],
     className,
   );

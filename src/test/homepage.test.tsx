@@ -1,7 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import Home from "@/app/page";
+import { homePageContent } from "@/content/homepage-content";
+import { siteConfig } from "@/content/site-config";
 
 describe("homepage", () => {
+  it("exposes editable homepage content through dedicated content files", () => {
+    expect(siteConfig.brand.name).toBe("LogiPlatform");
+    expect(siteConfig.footer.copyright).toContain("LogiPlatform");
+    expect(homePageContent.hero.titleLines[0]).toBe("连接物流全链路");
+    expect(homePageContent.sections.capabilities.title).toBe(
+      "六大能力，共属一个平台体系",
+    );
+  });
+
   it("renders the core homepage sections from the design", () => {
     render(<Home />);
 

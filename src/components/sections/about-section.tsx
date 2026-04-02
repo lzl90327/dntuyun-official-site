@@ -1,59 +1,60 @@
 import { ArrowRight } from "lucide-react";
-import { aboutStats } from "@/lib/site-data";
+import { homePageContent } from "@/content/homepage-content";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 
 export function AboutSection() {
+  const { about } = homePageContent.sections;
+
   return (
-    <section
-      id="about"
-      className="bg-surface scroll-mt-28 py-18 sm:py-24 lg:py-28"
-    >
+    <section id="about" className="bg-surface section-shell scroll-mt-28">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
-          <Reveal className="max-w-[520px] space-y-6">
-            <p className="text-brand-blue text-[11px] font-semibold tracking-[0.18em] uppercase">
-              关于我们
-            </p>
-            <h2 className="text-ink-strong text-[34px] leading-[1.12] font-semibold tracking-[-0.05em] text-balance sm:text-[46px]">
-              专注物流数字化的
+        <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:gap-16">
+          <Reveal className="max-w-[530px] space-y-6 lg:pt-1">
+            <p className="eyebrow">{about.eyebrow}</p>
+            <h2 className="text-ink-strong text-[32px] leading-[1.14] font-semibold tracking-[-0.055em] text-balance sm:text-[42px]">
+              {about.titleLines[0]}
               <br />
-              平台型科技公司
+              {about.titleLines[1]}
             </h2>
-            <p className="text-ink-soft text-[15px] leading-8">
-              专注物流行业数字化平台建设，深耕物流业务场景，为物流企业提供覆盖全链路的统一数字化平台。
-            </p>
-            <p className="text-ink-soft text-[15px] leading-8">
-              以模块化架构为基础，以业务协同为核心，以开放集成为边界，支撑物流企业从单点数字化向全局平台化持续演进。
-            </p>
-            <a
-              href="#contact"
-              className="text-brand-blue inline-flex items-center gap-2 pt-3 text-sm font-medium"
+            <div className="max-w-[498px] space-y-4">
+              {about.paragraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="text-ink-soft text-[14px] leading-[1.92]"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="text-link-subtle inline-flex items-center gap-2 pt-5"
             >
-              了解公司详情
+              {about.action.label}
               <ArrowRight size={15} />
-            </a>
+            </button>
           </Reveal>
 
           <Reveal delay={0.06}>
-            <div className="border-line shadow-soft overflow-hidden rounded-[24px] border bg-white">
-              <div className="border-line bg-brand-blue/[0.06] text-ink-strong border-b px-6 py-4 text-sm font-medium">
-                企业概况
+            <div className="panel-white overflow-hidden rounded-[26px]">
+              <div className="border-b border-black/[0.045] bg-brand-blue/[0.03] px-6 py-[13px] text-[13px] font-medium text-[#1a2538]">
+                {about.statsPanelTitle}
               </div>
-              <div className="divide-line divide-y">
-                {aboutStats.map((item) => (
+              <div className="divide-y divide-black/[0.045]">
+                {about.stats.map((item) => (
                   <div
                     key={item.title}
-                    className="grid gap-2 px-6 py-6 sm:grid-cols-[120px_1fr] sm:items-center"
+                    className="grid gap-2 px-6 py-[22px] sm:grid-cols-[120px_1fr] sm:items-center"
                   >
-                    <div className="text-brand-blue text-[40px] font-semibold tracking-[-0.05em]">
+                    <div className="text-brand-blue/90 text-[34px] font-semibold tracking-[-0.05em]">
                       {item.value}
                     </div>
                     <div className="space-y-1">
-                      <div className="text-ink-strong text-[18px] font-semibold tracking-[-0.03em]">
+                      <div className="text-ink-strong text-[16px] font-semibold tracking-[-0.03em]">
                         {item.title}
                       </div>
-                      <div className="text-ink-faint text-[14px]">
+                      <div className="text-[11px] leading-[1.65] text-[#8f99ab]">
                         {item.description}
                       </div>
                     </div>

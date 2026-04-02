@@ -46,6 +46,9 @@ src/
     globals.css
     layout.tsx
     page.tsx
+  content/
+    homepage-content.ts
+    site-config.ts
   components/
     layout/
       site-footer.tsx
@@ -67,7 +70,6 @@ src/
       section-heading.tsx
       stat-item.tsx
   lib/
-    site-data.ts
     utils.ts
   test/
     homepage.test.tsx
@@ -89,7 +91,7 @@ src/
 ## 设计实现说明
 
 - 颜色、排版、边框、阴影通过 `src/app/globals.css` 中的 CSS 变量统一管理
-- 页面文案优先复用设计稿截图内容，少量难以辨认的描述已按相近语义还原，并在 `src/lib/site-data.ts` 中标记 `TODO`
+- 页面文案与品牌基础信息集中放在 `src/content/homepage-content.ts` 与 `src/content/site-config.ts`
 - 动效仅用于轻量入场与 hover 反馈，避免破坏官网的理性与克制感
 - 首页按组件化结构组织，后续可继续扩展二级页面
 

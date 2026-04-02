@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Noto_Sans_SC } from "next/font/google";
+import { siteConfig } from "@/content/site-config";
 import "./globals.css";
 
 const notoSansSc = Noto_Sans_SC({
@@ -15,9 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LogiPlatform | 物流数字化平台体系",
-  description:
-    "面向物流企业的数字化平台型官方网站，展示平台能力、技术架构、业务场景与合作方式。",
+  title: siteConfig.seo.title,
+  description: siteConfig.seo.description,
 };
 
 export default function RootLayout({

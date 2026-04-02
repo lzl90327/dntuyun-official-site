@@ -1,39 +1,46 @@
 import {
   ArrowRight,
-  Network,
-  Package2,
-  PanelsTopLeft,
-  ScanSearch,
+  Building2,
+  ChartColumn,
+  Cuboid,
+  Plug2,
+  Truck,
+  Workflow,
 } from "lucide-react";
-import {
-  capabilityCards,
-  capabilityTags,
-  platformBaseTags,
-} from "@/lib/site-data";
+import { homePageContent } from "@/content/homepage-content";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const capabilityIcons = [Network, Package2, PanelsTopLeft, ScanSearch];
+const capabilityIcons = {
+  featured: Workflow,
+  cards: [Truck, Building2, ChartColumn, Plug2],
+  base: Cuboid,
+};
 
 export function CapabilitiesSection() {
+  const { capabilities } = homePageContent.sections;
+  const FeaturedIcon = capabilityIcons.featured;
+  const BaseIcon = capabilityIcons.base;
+
   return (
     <section
       id="capabilities"
-      className="bg-surface scroll-mt-28 py-18 sm:py-24 lg:py-28"
+      className="bg-surface section-shell scroll-mt-28"
     >
-      <Container className="space-y-10">
+      <Container className="space-y-12">
         <Reveal>
           <SectionHeading
-            eyebrow="平台能力"
-            title="六大能力，共属一个平台体系"
+            eyebrow={capabilities.eyebrow}
+            title={capabilities.title}
             align="between"
+            titleClassName="max-w-none whitespace-nowrap text-[24px] tracking-[-0.045em] sm:text-[32px] lg:text-[38px]"
             action={
               <a
-                href="#contact"
-                className="text-brand-blue inline-flex items-center gap-2 text-sm font-medium"
+                href={capabilities.action.href}
+                className="text-link-subtle inline-flex items-center gap-2"
               >
-                查看完整能力
+                {capabilities.action.label}
                 <ArrowRight size={15} />
               </a>
             }
@@ -43,100 +50,112 @@ export function CapabilitiesSection() {
         <div className="hidden items-center justify-between px-10 lg:flex">
           {Array.from({ length: 6 }).map((_, index) => (
             <div key={index} className="flex flex-1 items-center">
-              <span className="bg-brand-blue size-2 rounded-full" />
+              <span className="bg-brand-blue/48 size-1 rounded-full" />
               {index < 5 ? (
-                <span className="bg-line-strong/40 h-px flex-1" />
+                <span className="h-px flex-1 bg-[linear-gradient(90deg,rgba(33,80,216,0.11),rgba(33,80,216,0.025))]" />
               ) : null}
             </div>
           ))}
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-[1.04fr_0.96fr]">
-          <Reveal className="bg-navy relative overflow-hidden rounded-[28px] border border-white/5 p-8 text-white shadow-[0_24px_70px_rgba(10,18,36,0.16)] sm:p-10">
-            <div className="absolute inset-y-0 left-0 w-px bg-white/5" />
-            <div className="space-y-6">
-              <div className="bg-brand-blue/30 inline-flex size-11 items-center justify-center rounded-[15px] border border-white/10">
-                <Network size={18} className="text-white" />
+        <div className="space-y-4 lg:space-y-5">
+          <div className="grid items-start gap-5 lg:grid-cols-[1.04fr_0.96fr] lg:items-stretch">
+            <Reveal className="value-grid-panel panel-dark relative flex h-full min-h-[360px] overflow-hidden rounded-[29px] px-8 py-7 text-white sm:px-9 sm:py-8 lg:min-h-[426px]">
+            <div className="absolute inset-y-0 left-0 w-px bg-white/[0.03]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.03),transparent_34%)]" />
+              <div className="relative flex h-full w-full flex-col">
+                <div className="space-y-3.5">
+                  <div className="bg-brand-blue/20 inline-flex size-10 items-center justify-center rounded-[14px] border border-white/8">
+                    <FeaturedIcon size={18} className="text-white" />
+                  </div>
+                  <h3 className="text-[28px] leading-[1.12] font-semibold tracking-[-0.052em]">
+                    {capabilities.featured.title}
+                  </h3>
+                  <div className="space-y-2.5">
+                    <p className="max-w-[446px] text-[14px] leading-[1.8] text-white/60">
+                      {capabilities.featured.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {capabilities.featured.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="bg-brand-blue/[0.14] rounded-[9px] border border-white/[0.055] px-3 py-1 text-[10px] font-medium tracking-[0.01em] text-white/68"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="mt-auto inline-flex items-center gap-2 pt-3 text-[13px] text-white/68 transition-colors hover:text-white"
+                >
+                  {capabilities.featured.detailLink.label}
+                  <ArrowRight size={15} />
+                </button>
               </div>
-              <h3 className="text-[32px] font-semibold tracking-[-0.05em]">
-                业务协同
-              </h3>
-              <p className="max-w-[510px] text-[15px] leading-8 text-white/58">
-                覆盖发货方、承运方、调度方多角色协同链路，实现订单、运单与结算的全流程数字化闭环。
-              </p>
+            </Reveal>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              {capabilities.cards.map((card, index) => {
+                const Icon = capabilityIcons.cards[index];
+                return (
+                  <Reveal
+                    key={card.title}
+                    delay={index * 0.05}
+                    className="panel-white group h-full rounded-[24px] p-6 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-[2px] hover:border-brand-blue/12 hover:shadow-[0_24px_50px_rgba(9,21,40,0.07)]"
+                  >
+                    <div className="mb-4.5 flex items-start justify-between">
+                      <div className="border-brand-blue/6 bg-brand-blue/[0.045] text-brand-blue inline-flex size-10 items-center justify-center rounded-[13px] border">
+                        <Icon size={18} />
+                      </div>
+                      <span className="text-[10px] font-semibold tracking-[0.16em] text-[#c2cad9]">
+                        0{index + 2}
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-ink-strong min-h-[26px] text-[19px] leading-[1.35] font-semibold tracking-[-0.04em]">
+                        {card.title}
+                      </h3>
+                      <p className="text-ink-soft/92 max-w-[262px] text-[13px] leading-[1.8] sm:min-h-[92px]">
+                        {card.description}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
+          <Reveal className="panel-white-soft relative overflow-hidden rounded-[22px] border border-brand-blue/[0.06] px-6 py-5 sm:px-8 sm:py-6">
+            <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(33,80,216,0.04),rgba(33,80,216,0.14),rgba(33,80,216,0.04))]" />
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+              <div className="flex items-start gap-4">
+                <div className="border-brand-blue/8 bg-brand-blue/[0.05] text-brand-blue mt-0.5 inline-flex size-11 shrink-0 items-center justify-center rounded-[14px] border">
+                  <BaseIcon size={18} />
+                </div>
+                <div className="space-y-2.5">
+                  <div className="text-ink-strong text-[14px] font-semibold tracking-[-0.02em]">
+                    {capabilities.base.title}
+                  </div>
+                  <p className="text-ink-soft max-w-[720px] text-[13px] leading-[1.9]">
+                    {capabilities.base.description}
+                  </p>
+                </div>
+              </div>
               <div className="flex flex-wrap gap-2">
-                {capabilityTags.map((tag) => (
+                {capabilities.base.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-brand-blue/22 rounded-[10px] border border-white/8 px-3 py-1.5 text-[11px] text-white/76"
+                    className="border-brand-blue/8 bg-brand-blue/[0.045] text-brand-blue rounded-full border px-3 py-1 text-[10px] font-medium"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 pt-4 text-sm text-white/72 transition-colors hover:text-white"
-              >
-                详细介绍
-                <ArrowRight size={15} />
-              </a>
             </div>
           </Reveal>
-
-          <div className="grid gap-5 sm:grid-cols-2">
-            {capabilityCards.map((card, index) => {
-              const Icon = capabilityIcons[index];
-              return (
-                <Reveal
-                  key={card.title}
-                  delay={index * 0.05}
-                  className="group border-line shadow-soft hover:border-brand-blue/18 rounded-[22px] border bg-white p-6 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(9,21,40,0.08)]"
-                >
-                  <div className="mb-5 flex items-start justify-between">
-                    <div className="bg-brand-blue/6 text-brand-blue inline-flex size-10 items-center justify-center rounded-[14px]">
-                      <Icon size={18} />
-                    </div>
-                    <span className="text-line-strong text-[11px] font-semibold tracking-[0.18em]">
-                      0{index + 2}
-                    </span>
-                  </div>
-                  <div className="space-y-3">
-                    <h3 className="text-ink-strong text-[22px] font-semibold tracking-[-0.04em]">
-                      {card.title}
-                    </h3>
-                    <p className="text-ink-soft text-[14px] leading-8">
-                      {card.description}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
         </div>
-
-        <Reveal className="border-line shadow-soft rounded-[20px] border bg-white px-6 py-5 sm:px-8">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="space-y-2">
-              <div className="text-ink-strong text-[15px] font-semibold">
-                平台底座
-              </div>
-              <p className="text-ink-soft max-w-[740px] text-[14px] leading-7">
-                模块化、可扩展的企业级平台架构，统一数据模型、消息总线与服务治理，是上述六大能力共同运行的工程基础。
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {platformBaseTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="border-brand-blue/12 bg-brand-blue/5 text-brand-blue rounded-full border px-3 py-1 text-[11px] font-medium"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </Container>
     </section>
   );

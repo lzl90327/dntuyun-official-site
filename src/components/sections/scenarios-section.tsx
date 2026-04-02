@@ -1,49 +1,53 @@
-import { scenarios } from "@/lib/site-data";
+import { homePageContent } from "@/content/homepage-content";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function ScenariosSection() {
+  const { scenarios } = homePageContent.sections;
+
   return (
-    <section className="py-18 sm:py-24 lg:py-28">
-      <Container className="space-y-10">
+    <section className="section-shell">
+      <Container className="space-y-12">
         <Reveal>
           <SectionHeading
-            eyebrow="典型场景"
-            title="面向真实物流业务，而非通用行业方案"
+            eyebrow={scenarios.eyebrow}
+            title={scenarios.title}
+            titleClassName="max-w-[15ch] text-[30px] leading-[1.18] tracking-[-0.045em] sm:text-[38px]"
           />
         </Reveal>
 
         <div className="grid gap-5 lg:grid-cols-3">
-          {scenarios.map((scenario, index) => (
+          {scenarios.cards.map((scenario, index) => (
             <Reveal
               key={scenario.title}
               delay={index * 0.05}
-              className="border-line shadow-soft rounded-[22px] border bg-white p-7"
+              className="panel-white group relative flex h-full flex-col rounded-[24px] p-7 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-[1px] hover:shadow-[0_20px_42px_rgba(9,21,40,0.06)]"
             >
-              <div className="mb-10 flex items-start justify-between">
-                <span className="text-[48px] font-semibold tracking-[-0.06em] text-[#eff3fa]">
+              <div className="bg-brand-blue/72 absolute inset-x-0 top-0 h-px rounded-full" />
+              <div className="mb-8 flex items-start justify-between">
+                <span className="text-[40px] font-semibold tracking-[-0.055em] text-[#edf1f7]">
                   {scenario.index}
                 </span>
-                <span className="border-brand-blue/12 bg-brand-blue/5 text-brand-blue rounded-full border px-3 py-1 text-[11px] font-semibold tracking-[0.12em] uppercase">
+                <span className="border-brand-blue/[0.06] bg-brand-blue/[0.025] text-brand-blue/78 rounded-full border px-3 py-1 text-[10px] font-semibold tracking-[0.09em] uppercase">
                   {scenario.tag}
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="text-ink-strong text-[28px] font-semibold tracking-[-0.05em]">
+              <div className="space-y-3.5">
+                <h3 className="text-ink-strong text-[25px] font-semibold tracking-[-0.05em]">
                   {scenario.title}
                 </h3>
-                <p className="text-ink-soft min-h-[108px] text-[14px] leading-8">
+                <p className="text-ink-soft/92 min-h-[110px] text-[13px] leading-[1.88]">
                   {scenario.description}
                 </p>
               </div>
 
-              <div className="border-line mt-8 flex flex-wrap gap-2 border-t pt-5">
+              <div className="mt-auto flex flex-wrap gap-2 border-t border-black/[0.05] pt-5">
                 {scenario.chips.map((chip) => (
                   <span
                     key={chip}
-                    className="bg-surface text-ink-faint rounded-full px-3 py-1 text-[11px]"
+                    className="border-line bg-surface text-ink-soft rounded-full border px-3 py-1 text-[10px] font-medium"
                   >
                     {chip}
                   </span>
