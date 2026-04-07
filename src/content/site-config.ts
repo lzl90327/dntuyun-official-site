@@ -61,6 +61,10 @@ export const siteConfig: SiteConfig = {
   // Footer
   footer: {
     copyright: "© 2026 DNTUYUN. All rights reserved.",
+    icp: {
+      label: "京ICP备2026007002号-1",
+      href: "https://beian.miit.gov.cn/#/Integrated/index",
+    },
     legalLinks: [
       { label: "隐私政策", href: "#" },
       { label: "服务条款", href: "#" },

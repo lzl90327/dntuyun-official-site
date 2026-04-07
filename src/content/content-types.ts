@@ -21,6 +21,7 @@ export type ContactConfig = {
 
 export type FooterConfig = {
   copyright: string;
+  icp: ContentLink;
   legalLinks: ContentLink[];
 };
 

@@ -56,9 +56,17 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 pt-6 text-[11px] text-white/24 sm:flex-row sm:items-center sm:justify-between">
+        <div className="grid gap-4 pt-6 text-[11px] text-white/24 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
           <p>{siteConfig.footer.copyright}</p>
-          <div className="flex gap-5">
+          <a
+            href={siteConfig.footer.icp.href}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="justify-self-start text-white/32 transition-[color,text-decoration-color] hover:text-white/46 hover:underline hover:decoration-white/28 hover:underline-offset-2 sm:justify-self-center"
+          >
+            {siteConfig.footer.icp.label}
+          </a>
+          <div className="flex gap-5 sm:justify-self-end">
             {siteConfig.footer.legalLinks.map((item) => (
               <a
                 key={item.label}
