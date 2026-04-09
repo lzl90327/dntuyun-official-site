@@ -3,6 +3,9 @@ import { siteConfig } from "@/content/site-config";
 import { BrandMark } from "@/components/ui/brand-mark";
 import { Container } from "@/components/ui/container";
 
+const footerFilingLinkClass =
+  "whitespace-nowrap text-white/40 transition-[color,text-decoration-color] hover:text-white/72 hover:underline hover:decoration-2 hover:decoration-white/45 hover:underline-offset-[3px]";
+
 export function SiteFooter() {
   const { footer } = homePageContent;
 
@@ -58,14 +61,28 @@ export function SiteFooter() {
 
         <div className="grid gap-4 pt-6 text-[11px] text-white/24 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
           <p>{siteConfig.footer.copyright}</p>
-          <a
-            href={siteConfig.footer.icp.href}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="justify-self-start text-white/32 transition-[color,text-decoration-color] hover:text-white/46 hover:underline hover:decoration-white/28 hover:underline-offset-2 sm:justify-self-center"
-          >
-            {siteConfig.footer.icp.label}
-          </a>
+          <div className="flex flex-wrap items-center justify-center justify-self-start gap-x-5 sm:justify-self-center">
+            <a
+              href={siteConfig.footer.icp.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={footerFilingLinkClass}
+            >
+              {siteConfig.footer.icp.label}
+            </a>
+            <span
+              className="h-2.5 w-px shrink-0 bg-white/24"
+              aria-hidden
+            />
+            <a
+              href={siteConfig.footer.policeBeian.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={footerFilingLinkClass}
+            >
+              {siteConfig.footer.policeBeian.label}
+            </a>
+          </div>
           <div className="flex gap-5 sm:justify-self-end">
             {siteConfig.footer.legalLinks.map((item) => (
               <a

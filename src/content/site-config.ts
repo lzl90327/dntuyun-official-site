@@ -35,6 +35,7 @@ import type { SiteConfig } from "@/content/content-types";
 //
 // 常改字段：
 // - footer.copyright
+// - footer.icp / footer.policeBeian
 // - footer.legalLinks
 
 export const siteConfig: SiteConfig = {
@@ -64,6 +65,10 @@ export const siteConfig: SiteConfig = {
     icp: {
       label: "京ICP备2026007002号-1",
       href: "https://beian.miit.gov.cn/#/Integrated/index",
+    },
+    policeBeian: {
+      label: "京公网安备11011502039755号",
+      href: "https://beian.mps.gov.cn/#/query/webSearch",
     },
     legalLinks: [
       { label: "隐私政策", href: "#" },
