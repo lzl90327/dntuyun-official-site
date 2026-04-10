@@ -15,11 +15,11 @@ export function SiteHeader() {
   const { navigation, contactButtonLabel } = homePageContent.header;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/[0.02] bg-white/74 backdrop-blur-[14px]">
+    <header className="sticky top-0 z-50 border-b border-brand-blue/[0.055] bg-[linear-gradient(180deg,rgba(251,252,254,0.92),rgba(244,247,252,0.86))] backdrop-blur-[9px]">
       <Container className="flex h-[72px] items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-2.5">
           <BrandMark className="size-7 rounded-[8px]" />
-          <span className="text-ink-strong text-[13px] font-semibold tracking-[-0.03em]">
+          <span className="text-ink-strong text-[14px] font-semibold leading-none tracking-[-0.045em]">
             {siteConfig.brand.name}
           </span>
         </Link>
@@ -45,7 +45,7 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="border-line text-ink-strong inline-flex size-[42px] items-center justify-center rounded-[13px] border bg-white/80 lg:hidden"
+          className="border-brand-blue/[0.08] text-ink-strong inline-flex size-[42px] items-center justify-center rounded-[13px] border bg-[rgba(247,250,255,0.88)] lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "关闭菜单" : "打开菜单"}
           aria-expanded={open}

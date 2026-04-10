@@ -93,7 +93,6 @@ export const homePageContent: HomePageContent = {
         tags: ["服务集群", "消息总线", "权限中心", "运维保障"],
       },
     ],
-    floatingLabels: ["业务协同", "运输管理", "运营分析"],
   },
 
   // Main sections

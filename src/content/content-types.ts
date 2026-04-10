@@ -117,7 +117,6 @@ export type HomePageContent = {
     secondaryButton: ContentLink;
     stats: StatItemContent[];
     structureCards: StructureCardContent[];
-    floatingLabels: string[];
   };
   sections: {
     value: {
