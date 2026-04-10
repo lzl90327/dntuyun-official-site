@@ -1,3 +1,5 @@
+"use client";
+
 import { Mail, MapPin, Phone } from "lucide-react";
 import { homePageContent } from "@/content/homepage-content";
 import { Button } from "@/components/ui/button";
@@ -11,11 +13,27 @@ const icons = {
   address: MapPin,
 };
 
+function contactItemHref(
+  type: string,
+  value: string,
+): string | undefined {
+  if (type === "phone") {
+    return `tel:${value.replace(/[\s-]/g, "")}`;
+  }
+  if (type === "email") {
+    return `mailto:${value.trim()}`;
+  }
+  return undefined;
+}
+
 export function ContactSection() {
   const { contact } = homePageContent.sections;
 
   return (
-    <section id="contact" className="section-shell scroll-mt-28">
+    <section
+      id="contact"
+      className="section-shell scroll-mt-28 pb-20 sm:pb-24"
+    >
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
           <Reveal className="max-w-[520px] space-y-7">
@@ -31,9 +49,20 @@ export function ContactSection() {
               </p>
             </div>
 
-            <div className="panel-white divide-y divide-black/[0.05] rounded-[26px]">
+            <div className="panel-white divide-y divide-line rounded-[26px]">
               {contact.items.map((item) => {
                 const Icon = icons[item.type as keyof typeof icons];
+                const href = contactItemHref(item.type, item.value);
+                const valueEl = href ? (
+                  <a
+                    href={href}
+                    className="text-ink-strong decoration-[color:color-mix(in_srgb,var(--brand-primary)_35%,transparent)] underline-offset-[5px] transition-[color,text-decoration-color] hover:text-brand-blue hover:decoration-brand-blue/50"
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <span className="text-ink-strong">{item.value}</span>
+                );
 
                 return (
                   <div key={item.title} className="flex gap-4 px-6 py-[22px]">
@@ -44,8 +73,8 @@ export function ContactSection() {
                       <div className="text-ink-faint text-[12px] font-medium">
                         {item.title}
                       </div>
-                      <div className="text-ink-strong break-words text-[20px] leading-[1.45] font-semibold tracking-[-0.04em]">
-                        {item.value}
+                      <div className="break-words text-[20px] leading-[1.45] font-semibold tracking-[-0.04em]">
+                        {valueEl}
                       </div>
                       {item.meta ? (
                         <div className="text-ink-faint text-[12px]">
@@ -61,7 +90,7 @@ export function ContactSection() {
 
           <Reveal delay={0.08}>
             <div className="panel-white rounded-[28px] p-6 sm:p-8 lg:sticky lg:top-28">
-              <div className="space-y-2 border-b border-black/[0.05] pb-6">
+              <div className="space-y-2 border-b border-line pb-6">
                 <h3 className="text-ink-strong text-[20px] font-semibold tracking-[-0.04em]">
                   {contact.form.title}
                 </h3>
@@ -70,7 +99,10 @@ export function ContactSection() {
                 </p>
               </div>
 
-              <form className="space-y-4.5 pt-6">
+              <form
+                className="space-y-4.5 pt-6"
+                onSubmit={(e) => e.preventDefault()}
+              >
                 <FormField
                   label={contact.form.fields.name.label}
                   placeholder={contact.form.fields.name.placeholder}
@@ -91,8 +123,8 @@ export function ContactSection() {
                 />
                 <Button
                   as="button"
-                  type="button"
-                  className="bg-brand-blue mt-1 h-[46px] w-full rounded-[13px] shadow-[0_10px_22px_rgba(33,80,216,0.11)] hover:shadow-[0_12px_24px_rgba(33,80,216,0.13)]"
+                  type="submit"
+                  className="bg-brand-blue mt-1 h-[46px] w-full rounded-[13px] text-white shadow-[var(--shadow-brand-xs)] hover:shadow-[var(--shadow-brand-xs-hover)]"
                 >
                   {contact.form.submitLabel}
                 </Button>

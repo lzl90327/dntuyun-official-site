@@ -15,7 +15,7 @@ export function SiteHeader() {
   const { navigation, contactButtonLabel } = homePageContent.header;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-blue/[0.055] bg-[linear-gradient(180deg,rgba(251,252,254,0.92),rgba(244,247,252,0.86))] backdrop-blur-[9px]">
+    <header className="sticky top-0 z-50 border-b border-[color:var(--brand-soft)] bg-[linear-gradient(180deg,color-mix(in_srgb,var(--bg-page)_92%,transparent),color-mix(in_srgb,var(--bg-section-alt)_86%,transparent))] backdrop-blur-[9px]">
       <Container className="flex h-[72px] items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-2.5">
           <BrandMark className="size-7 rounded-[8px]" />
@@ -36,8 +36,7 @@ export function SiteHeader() {
           ))}
           <Button
             href="#contact"
-            className="h-[42px] rounded-[12px] px-[18px] text-[12px] shadow-[0_10px_22px_rgba(33,80,216,0.14)]"
-            style={{ color: "#fff" }}
+            className="h-[42px] rounded-[12px] px-[18px] text-[12px] text-white shadow-[var(--shadow-brand-xs)]"
           >
             {contactButtonLabel}
           </Button>
@@ -45,7 +44,7 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="border-brand-blue/[0.08] text-ink-strong inline-flex size-[42px] items-center justify-center rounded-[13px] border bg-[rgba(247,250,255,0.88)] lg:hidden"
+          className="border-[color:color-mix(in_srgb,var(--brand-primary)_8%,transparent)] text-ink-strong inline-flex size-[42px] items-center justify-center rounded-[13px] border bg-[color:color-mix(in_srgb,var(--bg-page)_88%,white)] lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label={open ? "关闭菜单" : "打开菜单"}
           aria-expanded={open}

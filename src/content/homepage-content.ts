@@ -143,7 +143,7 @@ export const homePageContent: HomePageContent = {
           "跨组织协同",
           "结算闭环",
         ],
-        detailLink: { label: "了解该能力", href: "" },
+        detailLink: { label: "了解该能力", href: "#capabilities" },
       },
       cards: [
         {
@@ -189,7 +189,7 @@ export const homePageContent: HomePageContent = {
         "开放连接  ——  便于与现有系统及第三方平台灵活集成",
         "底座保障  ——  以服务集群、消息总线、权限与运维能力支撑持续运行",
       ],
-      action: { label: "了解技术架构", href: "" },
+      action: { label: "了解技术架构", href: "#architecture" },
       layers: [
         {
           level: "L4",
@@ -259,7 +259,7 @@ export const homePageContent: HomePageContent = {
         "我们专注于物流行业数字化平台建设，围绕真实业务场景，为物流企业提供覆盖全链路协同的平台能力。",
         "以模块化架构为基础，以业务协同为核心，以开放连接为边界，支持物流企业从单点数字化向平台化持续演进。",
       ],
-      action: { label: "了解更多", href: "" },
+      action: { label: "了解更多", href: "#contact" },
       statsPanelTitle: "企业概况",
       stats: [
         {

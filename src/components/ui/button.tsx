@@ -24,11 +24,11 @@ type ButtonProps = LinkButtonProps | NativeButtonProps;
 
 const variants = {
   primary:
-    "bg-brand-blue text-white shadow-[0_12px_28px_rgba(33,80,216,0.15)] hover:bg-brand-blue-strong hover:text-white hover:shadow-[0_14px_30px_rgba(33,80,216,0.18)] focus-visible:text-white active:text-white",
+    "bg-brand-blue text-white visited:text-white shadow-[var(--shadow-brand-sm)] hover:bg-brand-blue-strong hover:text-white hover:shadow-[var(--shadow-brand-sm-hover)] focus-visible:text-white active:text-white",
   secondary:
-    "border border-line bg-white/92 text-ink-strong hover:border-brand-blue/22 hover:bg-white hover:text-brand-blue",
+    "border border-line bg-white/92 text-ink-strong visited:text-ink-strong hover:border-[color:color-mix(in_srgb,var(--brand-primary)_22%,transparent)] hover:bg-white hover:text-brand-blue visited:hover:text-brand-blue focus-visible:text-ink-strong active:text-ink-strong",
   ghost:
-    "border border-white/12 bg-white/[0.02] text-white/86 hover:border-white/18 hover:bg-white/[0.05] hover:text-white",
+    "border border-white/12 bg-white/[0.02] text-white/86 visited:text-white/86 hover:border-white/18 hover:bg-white/[0.05] hover:text-white focus-visible:text-white active:text-white",
 };
 
 export function Button(allProps: ButtonProps) {
@@ -72,7 +72,13 @@ export function Button(allProps: ButtonProps) {
   void _children;
 
   return (
-    <a className={sharedClassName} {...anchorProps}>
+    <a
+      className={cn(
+        sharedClassName,
+        variant === "primary" ? "ui-btn--primary" : null,
+      )}
+      {...anchorProps}
+    >
       {children}
     </a>
   );

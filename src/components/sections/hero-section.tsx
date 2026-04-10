@@ -23,7 +23,7 @@ export function HeroSection() {
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-[4.75rem] xl:gap-[5.5rem]">
           <Reveal className="max-w-[600px]">
             <div className="border-brand-blue/10 bg-brand-blue/[0.055] text-brand-blue inline-flex items-center gap-2 rounded-full border px-3.5 py-1 text-[10px] font-semibold tracking-[0.16em]">
-              <span className="bg-brand-blue size-1.5 rounded-full shadow-[0_0_0_3px_rgba(33,80,216,0.12)]" />
+              <span className="bg-brand-blue size-1.5 rounded-full shadow-[var(--shadow-brand-eyebrow-dot)]" />
               {hero.eyebrow}
             </div>
 
@@ -44,7 +44,6 @@ export function HeroSection() {
               <Button
                 href={hero.primaryButton.href}
                 className="min-w-[168px] gap-2 rounded-[13px] px-5"
-                style={{ color: "#fff" }}
               >
                 {hero.primaryButton.label}
                 <ArrowRight size={16} />
@@ -58,12 +57,12 @@ export function HeroSection() {
               </Button>
             </div>
 
-            <div className="relative mt-12 rounded-[22px] border border-brand-blue/[0.075] bg-[linear-gradient(142deg,rgba(255,255,255,0.93)_0%,rgba(248,251,255,0.82)_45%,rgba(238,244,252,0.55)_100%)] px-6 py-7 shadow-[0_14px_40px_rgba(33,80,216,0.038),inset_0_1px_0_rgba(255,255,255,0.78)] sm:mt-14 sm:px-8 sm:py-8 lg:mt-[3.25rem]">
+            <div className="hero-stats-panel relative mt-12 rounded-[22px] px-6 py-7 sm:mt-14 sm:px-8 sm:py-8 lg:mt-[3.25rem]">
               <div
-                className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-brand-blue/18 to-transparent"
+                className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-[color:color-mix(in_srgb,var(--brand-primary)_18%,transparent)] to-transparent"
                 aria-hidden="true"
               />
-              <div className="grid gap-9 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-brand-blue/[0.08]">
+              <div className="grid gap-9 sm:grid-cols-3 sm:gap-0 sm:divide-x sm:divide-[color:color-mix(in_srgb,var(--brand-primary)_8%,transparent)]">
                 {hero.stats.map((item, index) => (
                   <div
                     key={item.label}
