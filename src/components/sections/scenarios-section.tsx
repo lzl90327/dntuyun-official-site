@@ -43,7 +43,7 @@ export function ScenariosSection() {
                 </p>
               </div>
 
-              <div className="mt-auto flex flex-wrap gap-2 border-t border-line pt-5">
+              <div className="mt-auto flex flex-wrap gap-2 border-t border-black/[0.05] pt-5">
                 {scenario.chips.map((chip) => (
                   <span
                     key={chip}

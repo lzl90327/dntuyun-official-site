@@ -35,7 +35,7 @@ export function ValueSection() {
                 className="mt-14 inline-flex items-center gap-2 text-[13px] text-white/68 transition-colors hover:text-white"
               >
                 {value.titleCard.action.label}
-                <ArrowRight size={16} />
+                <ArrowRight size={15} />
               </a>
             </div>
           </Reveal>
@@ -47,7 +47,7 @@ export function ValueSection() {
                 delay={index * 0.05}
                 className="grid gap-4 px-7 py-7 sm:grid-cols-[64px_1fr] sm:px-9"
               >
-                <div className="text-[11px] font-semibold tracking-[0.16em] text-ink-faint">
+                <div className="text-[11px] font-semibold tracking-[0.16em] text-[#c4ccda]">
                   {item.index}
                 </div>
                 <div className="space-y-2.5">

@@ -27,21 +27,21 @@ export function AboutSection() {
                 </p>
               ))}
             </div>
-            <a
-              href={about.action.href}
+            <button
+              type="button"
               className="text-link-subtle inline-flex items-center gap-2 pt-5"
             >
               {about.action.label}
-              <ArrowRight size={16} />
-            </a>
+              <ArrowRight size={15} />
+            </button>
           </Reveal>
 
           <Reveal delay={0.06}>
             <div className="panel-white overflow-hidden rounded-[26px]">
-              <div className="border-b border-line bg-[color:color-mix(in_srgb,var(--brand-primary)_3%,transparent)] px-6 py-[13px] text-[13px] font-medium text-ink-strong">
+              <div className="border-b border-black/[0.045] bg-brand-blue/[0.03] px-6 py-[13px] text-[13px] font-medium text-[#1a2538]">
                 {about.statsPanelTitle}
               </div>
-              <div className="divide-y divide-line">
+              <div className="divide-y divide-black/[0.045]">
                 {about.stats.map((item) => (
                   <div
                     key={item.title}
@@ -54,7 +54,7 @@ export function AboutSection() {
                       <div className="text-ink-strong text-[16px] font-semibold tracking-[-0.03em]">
                         {item.title}
                       </div>
-                      <div className="text-[11px] leading-[1.65] text-ink-faint">
+                      <div className="text-[11px] leading-[1.65] text-[#8f99ab]">
                         {item.description}
                       </div>
                     </div>
